@@ -1,21 +1,12 @@
 #include <string>
-
 #include "format.h"
-
 using std::string;
-
-
-
-// TODO: Complete this helper function
-// INPUT: Long int measuring seconds
-// OUTPUT: HH:MM:SS
-// REMOVE: [[maybe_unused]] once you define the function
+//Everything here is done
 
 string Format::ElapsedTime(long seconds) { 
     /*Accepts long as input returns a string;
       Converts seconds into hours:minutes:seconds
     */
-
    //Conversion of the seconds into the different "fields"
 int hours_=seconds/3600;
 int minutes_=(seconds/60-hours_*60);
@@ -23,7 +14,6 @@ int seconds_=(seconds-minutes_*60-hours_*3600);
     //Creation of the string to output the time
 std::string time=convertTime(hours_)+":"+convertTime(minutes_)+":"+convertTime(seconds_);
 return time;}
-
 
 string Format::convertTime(int number){
     /*Function accepts an int and returns a string.
