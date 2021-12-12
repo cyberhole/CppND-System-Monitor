@@ -5,7 +5,7 @@
 
 namespace Format {
 std::string convertTime(int number);
-std::string ElapsedTime(long times);                             
-};                           //namespace Format         
- 
+std::string ElapsedTime(long times);
+};  // namespace Format
+
 #endif

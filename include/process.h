@@ -2,6 +2,9 @@
 #define PROCESS_H
 
 #include <string>
+
+#include "linux_parser.h"
+#include "processor.h"
 using std::string;
 /*
 Basic class for Process representation
@@ -17,15 +20,25 @@ class Process {
   long int UpTime();                       // TODO: See src/process.cpp
   bool operator<(Process const& a) const;  // TODO: See src/process.cpp
 
-Process(int pid):pid_(pid){}
-  // TODO: Declare any necessary private members
- private:
- int pid_;
- string user_;
- string command_;
- float cpuUtilization_;
- string ram_;
- long int upTime_;
-};
+  float jiffies_;  // public variable to be accessible
 
+  Process(int pid, int cpuJiffies, long oldJiffies)
+      : pid_(pid), oldJiffies_(oldJiffies), cpuJiffies_(cpuJiffies) {
+    user_ = User();
+    command_ = Command();
+    cpuUtilization_ = CpuUtilization();
+    ram_ = Ram();
+    upTime_ = UpTime();
+  }
+  // Declare any necessary private members
+ private:
+  int pid_;
+  string user_;
+  string command_;
+  float cpuUtilization_;
+  string ram_;
+  long int upTime_;
+  long oldJiffies_;
+  int cpuJiffies_;
+};
 #endif
